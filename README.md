@@ -3,7 +3,7 @@
 Welcome to my personal portfolio! This website showcases my background, technical skills, projects, learning journey, and professional interests as an aspiring Data Scientist and Data Analyst.
 
 🌐 **Live Portfolio:**  
-https://harshithag25.github.io/HARSHITHA-PORTFOLIO/
+https://harshithag25.github.io/Portfolio/
 
 ## About the Project
 
