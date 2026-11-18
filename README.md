@@ -68,8 +68,7 @@ To add a project, update its details and provide the appropriate repository or l
 This portfolio is deployed using **GitHub Pages**.
 
 Live Website:  
-https://harshithag25.github.io/HARSHITHA-PORTFOLIO/
-
+https://harshithag25.github.io/Portfolio/
 To deploy updates:
 
 1. Push your latest changes to the `main` branch.
