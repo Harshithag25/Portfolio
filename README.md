@@ -75,25 +75,10 @@ To deploy updates:
 1. Push your latest changes to the `main` branch.
 2. GitHub Pages automatically rebuilds and publishes the website.
 
-Other free hosting options include:
-
-- Netlify
-- Vercel
-
 ## Upcoming Improvements
 
 - Add project screenshots and visual previews.
 - Include repository links for additional projects where publicly available.
 - Enhance project descriptions and demonstrations as projects evolve.
-
-## Contact
-
-**Harshitha Gontla**
-
-- GitHub: https://github.com/Harshithag25
-- LinkedIn: https://www.linkedin.com/in/harshitha-gontla-646bbb359/
-- Email: gontlaharshitha@gmail.com
-
----
 
 Thank you for visiting my portfolio!
