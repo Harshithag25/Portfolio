@@ -15,7 +15,10 @@ Add a project link by filling its `link` field. A project with an empty link sho
 - **Vercel:** `vercel` in this folder, or import the repo; no build command, output directory is the root.
 
 After deploying, set `og:image` in `index.html` to the full URL of `assets/og-preview.png` so social previews work.
+<<<<<<< HEAD
 
 ## Still to add
 - Project screenshots in `assets/` (none are shown until you add real ones).
 - Repo links for USB device, InsureBridge and HealthMate AI, if they are public.
+=======
+>>>>>>> dce05c8b6cb6a667628daa17194db90b4b3d9c4c
