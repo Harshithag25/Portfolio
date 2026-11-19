@@ -5,7 +5,9 @@ const esc=t=>String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;');
 const split=t=>`<span aria-label="${esc(t)}">`+t.split(' ').map(w=>`<span class="w" aria-hidden="true"><span>${esc(w)}</span></span>`).join(' ')+'</span>';
 const ext=(h,t,c='pill')=>`<a class="${c} mag" href="${h}" target="_blank" rel="noopener">${t}</a>`;
 document.title=`${S.full} | ${S.role}`;
-$('#ldImg').src=S.original;$('#hdImg').src=S.original;$('#hdName').textContent=S.name;
+$('#ldImg').src=S.original;
+$('#hdImg').src=S.original;
+$('#hdName').textContent=S.full.toUpperCase();
 $('#hdTalk').textContent=U.talk;$('#menuBtn').textContent=U.menu;
 $('#menuList').innerHTML=C.nav.map(n=>`<li><a href="#${n[0]}">${esc(n[1])}</a></li>`).join('');
 const P=C.work.projects;
@@ -14,8 +16,8 @@ $('#app').innerHTML=`
 <div class="hcopy"><div><p class="mu">${C.hero.hello}</p><h1>${C.hero.lines.join('<br>')}<br><em>${C.hero.accent}</em></h1></div><div><p>${S.pitch}</p><div class="row" style="margin-top:18px"><a class="pill lime mag" href="#work">${U.work}</a>${ext(S.github,U.github)}${ext(S.linkedin,U.linkedin)}</div></div></div></section>
 <section id="skills" aria-label="Skills"><div class="mq">${[0,1].map(()=>C.skills.map((s,i)=>`<span>${esc(s)}</span><b aria-hidden="true">✦</b>`).join('')).join('')}</div></section>
 <section id="prologue"><h2>${C.prologue.lines.map(split).join('<br>')}</h2><i class="brush" aria-hidden="true"></i><p>${esc(C.prologue.text)}</p></section>
-<section id="about"><div class="g"><div class="card"><img loading="lazy" src="${S.original}" alt="${S.full} in a black blazer" width="1156" height="1361"></div><div><h2 class="mu" style="font-size:22px;margin-bottom:14px">${C.about.title}</h2>${C.about.text.map(t=>`<p style="margin-bottom:14px">${esc(t)}</p>`).join('')}<div class="sig" aria-hidden="true">${C.about.signature}</div><div class="blocks">${C.about.blocks.map(b=>`<div><h3>${b[0]}</h3><p class="mu">${b[1]}</p></div>`).join('')}</div><div class="stats">${C.about.stats.map(s=>`<div><b>${s[0]}</b>${s[1]}</div>`).join('')}</div></div></div></section>
-<section id="journey"><h2>${C.journey.title}</h2><div class="tl"><i class="pg"></i>${C.journey.items.map(i=>`<div class="ms"><small>${i[0]} · ${i[1]}</small><h3>${esc(i[2])}</h3></div>`).join('')}</div></section>
+<section id="about"><div class="g"><div class="card"><img loading="lazy" src="${S.original}" alt="${S.full} in a black blazer" width="1156" height="1361"></div><div><h2 class="about-title">${C.about.title}</h2>${C.about.text.map(t=>`<p style="margin-bottom:14px">${esc(t)}</p>`).join('')}<div class="sig" aria-hidden="true">${C.about.signature}</div><div class="blocks">${C.about.blocks.map(b=>`<div><h3>${b[0]}</h3><p class="mu">${b[1]}</p></div>`).join('')}</div><div class="stats">${C.about.stats.map(s=>`<div><b>${s[0]}</b>${s[1]}</div>`).join('')}</div></div></div></section>
+<section id="journey"><h2 class="journey-title">My <em>Journey</em></h2><div class="tl"><i class="pg"></i>${C.journey.items.map(i=>`<div class="ms"><small>${i[0]} · ${i[1]}</small><h3>${esc(i[2])}</h3></div>`).join('')}</div></section>
 <section id="work"><h2>${C.work.title}</h2>${P.map((p,i)=>`<article class="pr" data-i="${i}"><span class="t">${String(i+1).padStart(2,'0')} · ${esc(p.tag)}</span><h3>${esc(p.name)}</h3><span class="s">${esc(p.stack)}</span><p class="d">${esc(p.desc)}</p>${p.link?ext(p.link,U.code+' ↗').replace('class="pill mag"','class="pill mag" style="justify-self:start"'):''}</article>`).join('')}
 <div class="xt"><span class="mu">${C.work.more}:</span>${C.work.extra.map(e=>ext(e[1],e[0])).join('')}</div></section>
 <div class="pv" id="pv" aria-hidden="true"></div>
@@ -53,6 +55,44 @@ if(seen||RM||!hasG){hide()}else{const o={v:0};gsap.to(o,{v:100,duration:1.5,ease
 function intro(){if(RM||!hasG)return;gsap.from('.wm',{yPercent:20,opacity:0,duration:1});gsap.from('.ph',{y:60,opacity:0,duration:1,delay:.15});gsap.from('.hcopy>*',{y:30,opacity:0,stagger:.1,delay:.4})}
 // scroll animations
 if(!RM&&hasG){gsap.registerPlugin(ScrollTrigger);
+    // ABOUT SECTION ANIMATIONS
+
+gsap.from("#about .about-title", {
+    y: 35,
+    opacity: 0,
+    duration: 1,
+    ease: "power3.out",
+    scrollTrigger: {
+        trigger: "#about",
+        start: "top 75%",
+        once: true
+    }
+});
+
+gsap.from("#about .g > div:nth-child(2) > p", {
+    y: 25,
+    opacity: 0,
+    duration: 0.8,
+    stagger: 0.2,
+    ease: "power2.out",
+    scrollTrigger: {
+        trigger: "#about",
+        start: "top 70%",
+        once: true
+    }
+});
+
+gsap.from("#about .blocks > div", {
+    y: 25,
+    opacity: 0,
+    duration: 0.7,
+    stagger: 0.12,
+    scrollTrigger: {
+        trigger: "#about .blocks",
+        start: "top 85%",
+        once: true
+    }
+});
 $$('#prologue .w>span').forEach(s=>gsap.from(s,{yPercent:110,duration:.8,scrollTrigger:{trigger:s,start:'top 92%'}}));
 gsap.from('.brush',{scaleX:0,duration:1,scrollTrigger:{trigger:'.brush',start:'top 90%'}});
 gsap.to('.pg',{scaleY:1,ease:'none',scrollTrigger:{trigger:'.tl',start:'top 60%',end:'bottom 60%',scrub:true}});

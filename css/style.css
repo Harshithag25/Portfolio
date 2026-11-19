@@ -20,10 +20,10 @@ em,.it{font-family:var(--sf);font-style:italic;font-weight:400;color:var(--li)}
 .grain{position:fixed;inset:-50%;z-index:60;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence baseFrequency='.8'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");animation:g 1s steps(6) infinite}
 @keyframes g{0%{transform:translate(0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-2%)}80%{transform:translate(3%,3%)}}
 #hero{min-height:100svh;display:grid;align-content:end;padding-top:110px;overflow:hidden;--mx:50%;--my:30%}
-.wm{font:800 clamp(64px,19vw,300px)/.8 var(--hd);letter-spacing:-.05em;text-align:center;position:relative;z-index:1;color:var(--tx)}
+.wm{font:800 clamp(64px,19vw,300px)/.8 var(--hd);letter-spacing:0.007em !important;text-align:center;position:relative;z-index:1;color:var(--tx)}
 .ph{position:relative;z-index:2;width:min(70vw,440px);margin:0 auto -4px;-webkit-mask-image:linear-gradient(#000 85%,transparent);mask-image:linear-gradient(#000 85%,transparent)}
 
-#hero:after{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;background:radial-gradient(260px at var(--mx) var(--my),transparent,rgba(11,11,13,.55))}
+#hero:after{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;background:none !important}
 .hcopy{position:relative;z-index:4;display:grid;gap:18px;margin-top:24px}
 .hcopy h1{font-size:clamp(32px,6vw,76px)}.hcopy p{max-width:46ch;color:var(--mu)}.hcopy .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
 @media(min-width:900px){#hero{align-content:center}.ph{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:min(34vw,480px);margin:0}.wm{position:absolute;top:18vh;left:0;right:0}.hcopy{margin-top:46vh;grid-template-columns:1fr 1fr;align-items:end}}
@@ -74,8 +74,8 @@ footer .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;m
     /* Reduce giant HARSHITHA wordmark */
     .wm {
         font-size: clamp(60px, 15vw, 225px);
-        letter-spacing: -0.055em;
-        top: 19vh;
+        letter-spacing: -0.060em;
+        top: 22vh;
     }
 
     /* Move hero photograph slightly right */
@@ -87,7 +87,7 @@ footer .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;m
 
     /* Maintain text positioning */
     .hcopy {
-        margin-top: 44vh;
+        margin-top: 50vh;
     }
 }
 
@@ -173,5 +173,250 @@ footer .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;m
     #hero .ph {
         width: min(92vw, 440px);
         margin: 0 auto;
+    }
+}
+
+/* HERO SECTION - DESKTOP SPACING FIX */
+
+@media (min-width: 900px) {
+
+    #hero {
+        min-height: 100vh;
+        padding: 100px 5vw 50px;
+        align-content: center;
+    }
+
+    .wm {
+        font-size: clamp(100px, 14vw, 210px);
+        top: 12vh;
+        left: 0;
+        right: 0;
+        text-align: center;
+    }
+
+    .ph {
+        position: absolute;
+        width: min(40vw, 540px);
+        left: 54%;
+        bottom: 0;
+        transform: translateX(-42%);
+        margin: 0;
+    }
+
+    .hcopy {
+        margin-top: 35vh;
+        grid-template-columns: 1fr 1fr;
+        align-items: end;
+        gap: 30px;
+    }
+
+    .hcopy h1 {
+        font-size: clamp(40px, 5vw, 76px);
+    }
+
+    .hcopy>div:last-child {
+        padding-left: 12vw;
+    }
+}
+
+/* HERO PROFILE IMAGE IMPROVEMENTS */
+
+.ph img {
+    filter: brightness(1.30) contrast(1.08) none !important;
+    transform: scale(1.06);
+    transition: none;
+}
+
+/* MOVE RIGHT CONTENT UPWARD */
+
+.hcopy > div:last-child {
+    transform: translateY(-80px);
+}
+
+/* HERO IMAGE IMPROVEMENTS */
+
+@media (min-width: 900px) {
+    #hero .ph {
+        width: min(45vw, 560px);
+        left: 54%;
+        bottom: 0;
+    }
+}
+
+#hero .ph img {
+    filter: brightness(1.20) contrast(1.04);
+    transform: scale(1.08);
+}
+
+/* RIGHT SIDE HERO CONTENT POSITION */
+
+@media (min-width: 900px) {
+    .hcopy > div:last-child {
+        transform: translate(35px, -110px);
+        padding-left: 15vw;
+    }
+}
+
+/* ABOUT SECTION HEADING */
+
+#about .about-title {
+    font-family: var(--hd);
+    font-size: clamp(40px, 4.5vw, 58px);
+    font-weight: 800;
+    color: var(--tx);
+    letter-spacing: -0.055em;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    display: inline-block;
+    position: relative;
+}
+
+/* Lime underline */
+
+#about .about-title::after {
+    content: "";
+    display: block;
+    width: 85px;
+    height: 4px;
+    background: var(--li);
+    border-radius: 16px;
+    margin-top: 5px;
+}
+
+#about .stats div {
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+#about .stats div:hover {
+    transform: translateY(-6px);
+    border-color: var(--li);
+}
+
+#about .blocks div {
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+#about .blocks div:hover {
+    transform: translateY(-5px);
+    border-color: var(--li);
+}
+
+/* MY JOURNEY - REDUCE TOP SPACING */
+
+#journey {
+    padding-top: 60px !important;
+}
+
+/* MY JOURNEY - INSTRUMENT SERIF FONT */
+
+#journey h2 {
+    font-family: 'Instrument Serif', serif !important;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(85px, 10vw, 135px);
+    letter-spacing: 0;
+    line-height: 1;
+    color: #f5f3ef;
+    margin-bottom: 55px;
+}
+
+#journey .ms small {
+    color: #c9f54a;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* MY JOURNEY HEADING DESIGN */
+
+#journey .journey-title {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: clamp(65px, 8vw, 105px);
+    font-weight: 1000;
+    letter-spacing: -3px;
+    line-height: 1.1;
+    color: #f5f3ef;
+    margin-bottom: 55px;
+}
+
+#journey .journey-title em {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--li);
+    letter-spacing: -1px;
+    margin-left: 8px;
+}
+
+/* ABOUT ME HEADING */
+
+#about .about-title {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: clamp(42px, 4.5vw, 60px);
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    line-height: 1.15;
+    color: #f5f3ef;
+    margin-bottom: 35px;
+}
+
+/* LIME UNDERLINE */
+
+#about .about-title::after {
+    content: "";
+    display: block;
+    width: 85px;
+    height: 4px;
+    background: var(--li);
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+/* SELECTED WORK HEADING UNDERLINE */
+
+#work > h2 {
+    display: inline-block;
+    position: relative;
+    padding-bottom: 18px;
+    margin-bottom: 35px;
+}
+
+#work > h2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 120px;
+    height: 5px;
+    background: var(--li);
+    border-radius: 5px;
+}
+
+/* Reduce space above the footer name */
+footer {
+    padding-top: 10px;
+}
+
+footer .big {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+/* Fix footer name alignment and visibility */
+footer .big {
+    font-size: clamp(4rem, 12vw, 14rem);
+    letter-spacing: 0.075em;
+    width: 100%;
+    text-align: center;
+    white-space: nowrap;
+    margin-left: 0;
+    padding: 0 10px;
+    box-sizing: border-box;
+    overflow: visible;
+}
+
+@media (max-width: 768px) {
+    footer .big {
+        letter-spacing: 0.015em;
     }
 }
